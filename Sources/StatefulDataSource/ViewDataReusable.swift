@@ -1,3 +1,10 @@
+//  ViewDataReusable.swift
+//  StatefulDataSource
+//
+//  Created by Eugène Peschard on 04/10/2019.
+//  Copyright © 2019 pesch.app All rights reserved.
+//
+
 #if !os(macOS)
 import UIKit
 #else
