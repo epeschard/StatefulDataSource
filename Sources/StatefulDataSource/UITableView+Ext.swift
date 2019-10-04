@@ -9,9 +9,9 @@
 #if !os(macOS)
 import UIKit
 
-extension UITableView {
+public extension UITableView {
 
-    func register<T: UITableViewCell>(reusable: T.Type) where T: ViewDataReusable {
+    public func register<T: UITableViewCell>(reusable: T.Type) where T: ViewDataReusable {
         switch T.reuseType {
         case .classReference(let className):
             self.register(className, forCellReuseIdentifier: T.reuseIdentifier)
@@ -20,14 +20,14 @@ extension UITableView {
         }
     }
 
-    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T where T: ViewDataReusable {
+    public func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T where T: ViewDataReusable {
         guard let cell = self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Did you register this cell?")
         }
         return cell
     }
 
-    func showEmptyView(with message: String) {
+    public func showEmptyView(with message: String) {
         self.separatorStyle = .none
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
@@ -40,7 +40,7 @@ extension UITableView {
         self.backgroundView = messageLabel;
     }
 
-    func removeEmptyView() {
+    public func removeEmptyView() {
         self.separatorStyle = .singleLine
         self.backgroundView = nil
     }

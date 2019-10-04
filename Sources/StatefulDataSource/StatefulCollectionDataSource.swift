@@ -9,9 +9,9 @@
 #if !os(macOS)
 import UIKit
 
-class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
+public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
 
-    init(for collectionView: UICollectionView? = nil, _ state: ListState<Cell.VM>) {
+    public init(for collectionView: UICollectionView? = nil, _ state: ListState<Cell.VM>) {
         self.state = state
         self.collectionView = collectionView
         super.init()
@@ -19,9 +19,9 @@ class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionViewCell
         collectionView?.register(reusable: Cell.self)
     }
 
-    fileprivate var emptyView: UIView?
+    var emptyView: UIView?
     public weak var collectionView: UICollectionView?
-    var state: ListState<Cell.VM> {
+    public var state: ListState<Cell.VM> {
         didSet {
             collectionView?.reloadData()
         }
@@ -54,9 +54,7 @@ class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionViewCell
         return cell
     }
 
-    //MARK: - Private
-
-    fileprivate func addEmptyViewForCurrentState() {
+    func addEmptyViewForCurrentState() {
         self.emptyView?.removeFromSuperview()
 
         let newEmptyView: UIView? = {

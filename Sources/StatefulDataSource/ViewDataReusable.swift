@@ -12,14 +12,14 @@ import Foundation
 #endif
 
 
-protocol ViewDataReusable: ViewDataConfigurable {
+public protocol ViewDataReusable: ViewDataConfigurable {
     static var reuseType: ReuseType { get }
     static var reuseIdentifier: String { get }
 }
 
 //MARK:- Extensions
 
-extension ViewDataReusable {
+public extension ViewDataReusable {
     public static var reuseIdentifier: String {
         return NSStringFromClass(self).components(separatedBy: ".").last!
 
@@ -29,14 +29,14 @@ extension ViewDataReusable {
     }
 }
 
-enum ReuseType {
+public enum ReuseType {
     #if !os(macOS)
     case nib(UINib)
     #endif
     case classReference(AnyClass)
 }
 
-protocol ViewDataConfigurable: class {
+public protocol ViewDataConfigurable: class {
     associatedtype VM
     func configure(for vm: VM)
 }

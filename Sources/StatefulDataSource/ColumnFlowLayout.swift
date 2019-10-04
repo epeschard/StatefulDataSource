@@ -9,11 +9,11 @@
 #if !os(macOS)
 import UIKit
 
-class ColumnFlowLayout: UICollectionViewFlowLayout {
+public class ColumnFlowLayout: UICollectionViewFlowLayout {
 
-    var cellHeight = CGFloat(65.0)
+    public var cellHeight = CGFloat(65.0)
 
-    override func prepare() {
+    public override func prepare() {
         super.prepare()
 
         guard let cv = collectionView else { return }

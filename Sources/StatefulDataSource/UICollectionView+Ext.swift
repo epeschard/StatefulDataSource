@@ -9,9 +9,9 @@
 #if !os(macOS)
 import UIKit
 
-extension UICollectionView {
+public extension UICollectionView {
 
-    func register<T: UICollectionViewCell>(reusable: T.Type) where T: ViewDataReusable {
+    public func register<T: UICollectionViewCell>(reusable: T.Type) where T: ViewDataReusable {
         switch T.reuseType {
         case .classReference(let className):
             self.register(className, forCellWithReuseIdentifier: T.reuseIdentifier)
@@ -20,14 +20,14 @@ extension UICollectionView {
         }
     }
 
-    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ViewDataReusable {
+    public func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ViewDataReusable {
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Did you register this cell?")
         }
         return cell
     }
 
-    func showEmptyView(with message: String) {
+    public func showEmptyView(with message: String) {
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
         messageLabel.textColor = .black
@@ -39,7 +39,7 @@ extension UICollectionView {
         self.backgroundView = messageLabel;
     }
 
-    func removeEmptyView() {
+    public func removeEmptyView() {
         self.backgroundView = nil
     }
 }

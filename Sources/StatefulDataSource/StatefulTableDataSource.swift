@@ -9,9 +9,9 @@
 #if !os(macOS)
 import UIKit
 
-class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: NSObject, UITableViewDataSource {
+public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: NSObject, UITableViewDataSource {
 
-    init(for tableView: UITableView? = nil, _ state: ListState<Cell.VM>) {
+    public init(for tableView: UITableView? = nil, _ state: ListState<Cell.VM>) {
         self.state = state
         self.tableView = tableView
         super.init()
@@ -19,9 +19,9 @@ class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: NSObjec
         tableView?.register(reusable: Cell.self)
     }
 
-    fileprivate var emptyView: UIView?
+    var emptyView: UIView?
     public weak var tableView: UITableView?
-    var state: ListState<Cell.VM> {
+    public var state: ListState<Cell.VM> {
         didSet {
             tableView?.reloadData()
         }
@@ -56,7 +56,7 @@ class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: NSObjec
 
     //MARK: - Private
 
-    fileprivate func addEmptyViewForCurrentState() {
+    func addEmptyViewForCurrentState() {
         self.emptyView?.removeFromSuperview()
 
         let newEmptyView: UIView? = {
