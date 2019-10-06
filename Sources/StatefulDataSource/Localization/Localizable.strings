@@ -1,0 +1,10 @@
+//
+//  Localizable.strings
+//  PhotosChallenge
+//
+//  Created by Eugene Peschard on 06/10/2019.
+//  Copyright © 2019 pesch.app. All rights reserved.
+//
+
+//MARK: - Generic
+"GENERIC_LABEL_EMPTY" = "No results, sorry";
