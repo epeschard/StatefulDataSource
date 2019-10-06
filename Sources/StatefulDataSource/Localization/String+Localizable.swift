@@ -8,9 +8,6 @@
 
 import Foundation
 
-/// Shortcut notation to get `String.Localized`
-public typealias Localized = String.Localized
-
 public extension String {
 
     /// Returns a localized string, using the main bundle
