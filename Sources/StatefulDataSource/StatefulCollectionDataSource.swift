@@ -81,7 +81,7 @@ public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionV
         guard let emptyView = newEmptyView, let collectionView = self.collectionView else { return }
 
         emptyView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(emptyView)
+        collectionView.addSubview(emptyView)
         if #available(iOS 9.0, *) {
             NSLayoutConstraint.activate([
                 emptyView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
