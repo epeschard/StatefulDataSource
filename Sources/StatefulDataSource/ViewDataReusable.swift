@@ -40,3 +40,7 @@ public protocol ViewDataConfigurable: class {
     associatedtype VM
     func configure(for vm: VM)
 }
+
+public func onMainQueue(block: @escaping () -> Void) {
+    DispatchQueue.main.async(execute: block)
+}

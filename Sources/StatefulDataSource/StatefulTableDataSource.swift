@@ -84,8 +84,10 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
 
         tableView.addSubview(emptyView)
         emptyView.translatesAutoresizingMaskIntoConstraints = false
-        emptyView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-        emptyView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -20).isActive = true
+        if #available(iOS 9.0, *) {
+            emptyView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+            emptyView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -20).isActive = true
+        }
         self.emptyView = newEmptyView
     }
 }

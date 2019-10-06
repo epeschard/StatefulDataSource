@@ -33,7 +33,9 @@ public extension UICollectionView {
         messageLabel.textColor = .black
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = .center;
-        messageLabel.font = UIFont.systemFont(ofSize: 19.0, weight: .light)
+        if #available(iOS 8.2, *) {
+            messageLabel.font = UIFont.systemFont(ofSize: 19.0, weight: .light)
+        }
         messageLabel.sizeToFit()
 
         self.backgroundView = messageLabel;

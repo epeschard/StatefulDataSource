@@ -80,11 +80,14 @@ public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionV
 
         guard let emptyView = newEmptyView, let collectionView = self.collectionView else { return }
 
-        collectionView.addAutolayoutView(emptyView)
-        NSLayoutConstraint.activate([
-            emptyView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
-            emptyView.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor, constant: -20)
-        ])
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(emptyView)
+        if #available(iOS 9.0, *) {
+            NSLayoutConstraint.activate([
+                emptyView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+                emptyView.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor, constant: -20)
+            ])
+        }
         self.emptyView = newEmptyView
     }
 }

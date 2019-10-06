@@ -26,8 +26,11 @@ public class ColumnFlowLayout: UICollectionViewFlowLayout {
 
         self.itemSize = CGSize(width: cellWidth, height: cellHeight)
         self.sectionInset = UIEdgeInsets(top: self.minimumInteritemSpacing, left: 0.0, bottom: 0.0, right: 0.0)
-        self.sectionInsetReference = .fromSafeArea
-    }
+        if #available(iOS 11.0, *) {
+            self.sectionInsetReference = .fromSafeArea
+        } else {
+            // Fallback on earlier versions
+        }    }
 
 }
 #endif
