@@ -16,15 +16,13 @@ public extension String {
     }
 }
 
-public extension String {
-    /// Namespace to access all localizable strings in the project
-    public enum Localized {
-
-        //MARK: - Generic
-        public enum Generic {
-            public enum Label {
-                public static let empty = "GENERIC_LABEL_EMPTY".localized
-            }
+/// Namespace to access all localizable strings in the project
+public enum Localized {
+    
+    //MARK: - Generic
+    public enum Generic {
+        public enum Label {
+            public static let empty = "GENERIC_LABEL_EMPTY".localized
         }
     }
 }
