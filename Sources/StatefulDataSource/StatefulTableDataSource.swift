@@ -64,7 +64,7 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
             case .loaded(let data):
                 if data.count == 0 {
                     let label = UILabel()
-                    label.text = Localized.Generic.Label.empty
+                    label.text = String.Localized.Generic.Label.empty
                     return label
                 } else {
                     return nil
