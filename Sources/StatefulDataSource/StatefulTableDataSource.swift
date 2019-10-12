@@ -57,6 +57,7 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
     //MARK: - Private
 
     func addEmptyViewForCurrentState() {
+        var activity = UIActivityIndicatorView(style: .gray)
         self.emptyView?.removeFromSuperview()
 
         let newEmptyView: UIView? = {
@@ -69,11 +70,12 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
                 } else {
                     return nil
                 }
+                activity.stopAnimating()
             case .loading:
-                let activity = UIActivityIndicatorView(style: .gray)
                 activity.startAnimating()
                 return activity
             case .failure(let error):
+                activity.stopAnimating()
                 let label = UILabel()
                 label.text = "Error: \(error.localizedDescription)"
                 return label
