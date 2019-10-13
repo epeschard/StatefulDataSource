@@ -20,6 +20,7 @@ public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionV
         super.init()
         collectionView?.dataSource = self
         collectionView?.register(reusable: Cell.self)
+        activity.hidesWhenStopped = true
     }
 
     var emptyView: UIView?

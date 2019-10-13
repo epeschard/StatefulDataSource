@@ -20,6 +20,7 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
         super.init()
         tableView?.dataSource = self
         tableView?.register(reusable: Cell.self)
+        activity.hidesWhenStopped = true
     }
 
     var emptyView: UIView?
