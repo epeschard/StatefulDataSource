@@ -11,12 +11,15 @@ import UIKit
 
 public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: NSObject, UITableViewDataSource {
 
-    public init(for tableView: UITableView? = nil, _ state: ListState<Cell.VM>) {
+    var activity: UIActivityIndicatorView
+
+    public init(for tableView: UITableView? = nil, _ state: ListState<Cell.VM>, activityIndicatorStyle: UIActivityIndicatorView.Style = .grey) {
         self.state = state
         self.tableView = tableView
         super.init()
         tableView?.dataSource = self
         tableView?.register(reusable: Cell.self)
+        activity = UIActivityIndicatorView(style: activityIndicatorStyle)
     }
 
     var emptyView: UIView?
@@ -57,7 +60,6 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
     //MARK: - Private
 
     func addEmptyViewForCurrentState() {
-        var activity = UIActivityIndicatorView(style: .gray)
         self.emptyView?.removeFromSuperview()
 
         let newEmptyView: UIView? = {

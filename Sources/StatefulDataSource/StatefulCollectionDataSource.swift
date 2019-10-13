@@ -11,12 +11,15 @@ import UIKit
 
 public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
 
-    public init(for collectionView: UICollectionView? = nil, _ state: ListState<Cell.VM>) {
+    var activity: UIActivityIndicatorView
+
+    public init(for collectionView: UICollectionView? = nil, _ state: ListState<Cell.VM>, activityIndicatorStyle: UIActivityIndicatorView.Style = .grey) {
         self.state = state
         self.collectionView = collectionView
         super.init()
         collectionView?.dataSource = self
         collectionView?.register(reusable: Cell.self)
+        activity = UIActivityIndicatorView(style: activityIndicatorStyle)
     }
 
     var emptyView: UIView?
@@ -67,6 +70,7 @@ public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionV
                 } else {
                     return nil
                 }
+                activity.stopAnimating()
             case .loading:
                 let activity = UIActivityIndicatorView(style: .gray)
                 activity.startAnimating()
@@ -74,6 +78,7 @@ public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionV
             case .failure(let error):
                 let label = UILabel()
                 label.text = "Error: \(error.localizedDescription)"
+                activity.stopAnimating()
                 return label
             }
         }()
