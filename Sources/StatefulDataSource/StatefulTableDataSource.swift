@@ -16,10 +16,10 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
     public init(for tableView: UITableView? = nil, _ state: ListState<Cell.VM>, activityIndicatorStyle: UIActivityIndicatorView.Style = .gray) {
         self.state = state
         self.tableView = tableView
+        self.activity = UIActivityIndicatorView(style: activityIndicatorStyle)
         super.init()
         tableView?.dataSource = self
         tableView?.register(reusable: Cell.self)
-        activity = UIActivityIndicatorView(style: activityIndicatorStyle)
     }
 
     var emptyView: UIView?

@@ -16,10 +16,10 @@ public class StatefulCollectionDataSource<Cell: ViewDataReusable & UICollectionV
     public init(for collectionView: UICollectionView? = nil, _ state: ListState<Cell.VM>, activityIndicatorStyle: UIActivityIndicatorView.Style = .gray) {
         self.state = state
         self.collectionView = collectionView
+        self.activity = UIActivityIndicatorView(style: activityIndicatorStyle)
         super.init()
         collectionView?.dataSource = self
         collectionView?.register(reusable: Cell.self)
-        activity = UIActivityIndicatorView(style: activityIndicatorStyle)
     }
 
     var emptyView: UIView?
