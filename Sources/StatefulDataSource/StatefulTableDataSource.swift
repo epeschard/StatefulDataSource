@@ -13,7 +13,7 @@ public class StatefulTableDataSource<Cell: ViewDataReusable & UITableViewCell>: 
 
     var activity: UIActivityIndicatorView
 
-    public init(for tableView: UITableView? = nil, _ state: ListState<Cell.VM>, activityIndicatorStyle: UIActivityIndicatorView.Style = .grey) {
+    public init(for tableView: UITableView? = nil, _ state: ListState<Cell.VM>, activityIndicatorStyle: UIActivityIndicatorView.Style = .gray) {
         self.state = state
         self.tableView = tableView
         super.init()
